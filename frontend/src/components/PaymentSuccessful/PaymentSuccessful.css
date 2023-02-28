@@ -1,0 +1,21 @@
+.paySucc {
+    text-align: center;
+}
+
+.paySucc h2{
+    margin-top: 10%;
+}
+
+.paySucc p{
+    font-size: 20px;
+}
+
+.paySucc button.backButton{
+    background-color: #204969;
+    align-items: center;
+    border-style: groove;
+    border-radius: 25px;
+    font-size: 20px;
+    color: aliceblue;
+    margin-bottom: 20%;
+}

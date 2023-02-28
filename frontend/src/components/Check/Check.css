@@ -1,0 +1,54 @@
+
+
+.process-button{
+    text-align: end;
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.process-button button{
+    color: white;
+    padding: 10px;
+    background-color: #204969;
+}
+
+
+.contact-details p{
+    padding: 10px;
+}
+
+.traveler-details p{
+    padding: 10px;
+}
+
+@media screen and (max-width: 840px) {
+    /*Smartphone/moblie view (unitl 840px)*/
+
+
+    .contact-details{
+        padding: 20px;
+        width: 100%;
+        margin: 20px auto;
+        border: 1px solid #D0DFE6;
+    }
+
+
+    .traveler-details{
+        padding: 20px;
+        width: 100%;
+        margin: 20px auto;
+        border: 1px solid #D0DFE6;
+    }
+
+
+    #add-traveler-button{
+        display: block;
+        width: 100%;
+        margin: 10px auto;
+        background-color: #204969;
+        border: none;
+        padding: 10px;
+    }
+
+}

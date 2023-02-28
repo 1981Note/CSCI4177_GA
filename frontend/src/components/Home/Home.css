@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body {
+    width: 80%;
+    min-height: 100px;
+    margin: 0 auto;
+}
+
+
+main {
+    min-height: 360px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+label input{
+    margin: 0px 10px;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+
+.flight-option{
+    margin: 10px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+.flight-filter{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.flight-filter select{
+    width: 20%;
+    padding: 10px 20px;
+    
+}
+
+.flight-filter input{
+    width: 20%;
+    padding: 7px 20px;
+}
+
+#search{
+    margin-left: 10px;
+    color: #fff7f7;
+    background-color: #204969;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+
+}
+
+#exchange{
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+.flight-info{
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #dadada;
+}
+
+.flight-info div{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flight-number-title {
+    
+    margin: 0px;
+    padding: 10px;
+    font-size: large;
+    background-color: #dadada;
+}
+
+.book-button {
+    color: #fff7f7;
+    background-color: #204969;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+
+
+@media screen and (max-width: 840px) {
+    /*Smartphone/moblie view (unitl 840px)*/
+
+    body {
+        width: 100%;
+        min-height: 100px;
+        margin: 0 auto;
+    }
+    
+    .flight-filter{
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    
+    .flight-filter select{
+        width: 100%;
+        padding: 10px 20px;
+    }
+    
+    .flight-filter input{
+        width: 100%;
+        padding: 7px 20px;
+    }
+    
+    #search{
+        margin: auto;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        color: #fff7f7;
+        background-color: #204969;
+    }
+
+    #exchange{
+        width: 100%;
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+    }
+
+}

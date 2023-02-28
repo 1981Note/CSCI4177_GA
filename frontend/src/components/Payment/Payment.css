@@ -1,0 +1,20 @@
+.pay {
+    text-align: center;
+}
+
+.pay p{
+    font-size: 20px; 
+    text-align: center;
+}
+
+.pay button.payButton{
+    background-color: #204969;
+    text-align: end;
+    border-style: groove;
+    border-radius: 25px;
+    font-size: 20px;
+    color: aliceblue;
+    margin-top: 20%;
+    margin-bottom: 10%;
+    margin-left: 50%;
+}

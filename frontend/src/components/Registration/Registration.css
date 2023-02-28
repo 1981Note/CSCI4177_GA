@@ -1,0 +1,17 @@
+.reg-btn {
+  width: 100%;
+  height: 50px;
+  padding: 20px;
+  border: none;
+  background-color: rebeccapurple;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+.regForm p {
+  color: red;
+}

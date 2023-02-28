@@ -1,0 +1,180 @@
+
+.flight-info{
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #dadada;
+}
+
+.flight-info div{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flight-number-title {
+    
+    margin: 0px;
+    padding: 10px;
+    font-size: large;
+    background-color: #dadada;
+}
+
+
+.book-title {
+    margin: 20px;
+}
+
+.check-title {
+    margin: 20px;
+}
+
+
+
+
+.contact-details{
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #dadada;
+}
+
+.contact-details h4{
+    margin: 0px;
+    padding: 10px;
+    font-size: large;
+}
+
+.contact-details form{
+    margin: 0 auto;
+    width: 60%;
+}
+
+.contact-details div{
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.traveler-details{
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #dadada;
+}
+
+.traveler-details h4{
+    padding: 10px;
+    margin: 0px;
+    font-size: large;
+}
+
+.traveler-details div{
+    margin: 0 auto;
+    width: 60%;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.traveler-details select{
+    width: 130px;
+}
+
+.traveler-details #day{
+    width: 28px;
+}
+
+.traveler-details #year{
+    width: 45px;
+}
+
+#enter-info-remove-button{
+    margin: 0 auto;
+    width: 100%;
+    background-color: #204969;
+    border: none;
+    color: white;
+    padding: 5px;
+}
+
+
+
+#add-traveler-button{
+    color: white;
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    background-color: #204969;
+    border: none;
+    padding: 10px;
+}
+
+
+
+.process-button{
+    text-align: end;
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.process-button button{
+    color: white;
+    padding: 10px;
+    background-color: #204969;
+}
+
+
+.contact-details p{
+    padding: 10px;
+}
+
+.traveler-details p{
+    padding: 10px;
+}
+
+@media screen and (max-width: 840px) {
+    /*Smartphone/moblie view (unitl 840px)*/
+
+
+    .contact-details{
+        padding: 20px;
+        /*margin: 20px 100px;*/
+        width: 100%;
+        margin: 20px auto;
+        border: 1px solid #D0DFE6;
+    }
+
+    
+    .contact-details form{
+        margin: 0 auto;
+        width: 80%;
+    }
+
+
+    .traveler-details{
+        padding: 20px;
+        width: 100%;
+        margin: 20px auto;
+        border: 1px solid #D0DFE6;
+    }
+    
+    .traveler-details form{
+        margin: 0 auto;
+        width: 80%;
+    }
+
+
+    #add-traveler-button{
+        display: block;
+        width: 100%;
+        margin: 10px auto;
+        background-color: #204969;
+        border: none;
+        padding: 10px;
+    }
+
+}
