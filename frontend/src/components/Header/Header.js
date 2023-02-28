@@ -37,8 +37,8 @@ function Header(){
                             
                         <div class={`dropdown-menu ${open? 'active' : 'inactive'}`}>
                             <ul>
-                                <li><Link href='/profile'><button id="home-profile-button"> <img src={profile} alt="profile" width={15} height={15}/> Profile </button></Link></li>
-                                <li><Link href='/trips'><button id="home-trips-button"> <img src={trips} alt="trips" width={15} height={15}/> Trips </button></Link></li>
+                                <li><Link to='/profile'><button id="home-profile-button"> <img src={profile} alt="profile" width={15} height={15}/> Profile </button></Link></li>
+                                <li><Link to='/trips'><button id="home-trips-button"> <img src={trips} alt="trips" width={15} height={15}/> Trips </button></Link></li>
                                 <li><button id="home-signout-button">  <img src={logout} alt="logout" width={15} height={15}/> Sign out </button></li>
                             </ul>
                         </div>
@@ -47,8 +47,8 @@ function Header(){
                 ) : (
                     
                     <div class="home-buttons">
-                        <Link href='/registration'><button id="home-register-button"> REGISTER </button></Link>
-                        <Link href='/login'><button id="home-login-button"> LOGIN </button></Link>
+                        <Link to='/registration'><button id="home-register-button"> REGISTER </button></Link>
+                        <Link to='/login'><button id="home-login-button"> LOGIN </button></Link>
                     </div>
                 
                 )}
