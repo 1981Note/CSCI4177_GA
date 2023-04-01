@@ -151,7 +151,7 @@ function Registration() {
       <form onSubmit={handleSubmit} class="regForm">
         <section class="form-modal">
           <div>
-            <h1 className="headerReg">FLYCANDA Registration</h1>
+            <h1 className="headerReg">FLYCANADA Registration</h1>
           </div>
           <div>
             <div>
