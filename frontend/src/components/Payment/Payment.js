@@ -51,7 +51,7 @@ function Payment() {
                 }))
             };
         
-            axios.post("http://localhost:4000/api/bookings", data, {
+            axios.post("https://csci4177-group18.onrender.com/api/bookings", data, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
