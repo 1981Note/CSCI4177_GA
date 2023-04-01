@@ -83,3 +83,12 @@ h1 {
     background-color: white;
     border: none;
 }
+
+@media screen and (max-width: 840px) {
+
+    #home-register-button,
+    #home-login-button {
+        width: 80px;
+    }
+}
+
