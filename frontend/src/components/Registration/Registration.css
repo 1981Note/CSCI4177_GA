@@ -1,21 +1,21 @@
 .regForm {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 200px;
 }
 .form-modal {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
   flex-direction: column;
-  background-color: aliceblue;
-  padding: 20px;
-  border-radius: 10px;
-  width: 40%;
-  height: 90vh;
-  margin-left: 50px;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
+
 .regForm input {
-  width: 70%;
+  width: 100%;
   height: 6vh;
   border-radius: 5px;
 }
@@ -44,4 +44,29 @@
 }
 .regForm p {
   color: red;
+}
+.regForm select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.regForm select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
+input[type="date"] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #555;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
 }
