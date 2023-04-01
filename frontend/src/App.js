@@ -11,6 +11,7 @@ import PaymentSuccessful from './components/PaymentSuccessful/PaymentSuccessful'
 import Trips from "./components/Trips/Trips";
 import Profile from "./components/Profile/Profile";
 import Help from "./components/Help/Help";
+import CancelInfo from "./components/CancelInfo/CancelInfo";
 import {AuthProvider} from './components/Auth/AuthContext';
 
 import {Routes, Route} from "react-router-dom";
@@ -31,6 +32,7 @@ function App() {
         <Route path='/trips' element={<Trips />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/help' element={<Help />}></Route>
+        <Route path='/cancelInfo' element={<CancelInfo />}></Route>
       </Routes>
     </AuthProvider>
   

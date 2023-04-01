@@ -68,5 +68,4 @@ const User = UserConnection.model('User', userSchema);
 const Booking = BookingConnection.model('Booking', bookingSchema);
 const Flight = FlightConnection.model('Flight', flightSchema)
 
-
-export { User, Booking, Flight, passengerSchema };
+export { User, Booking, Flight, passengerSchema, userSchema };

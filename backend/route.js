@@ -1,7 +1,8 @@
 import express from 'express';
 
-import { User, Booking, Flight } from './model.js';
+import { User, Booking, Flight} from './model.js';
 import mongoose from 'mongoose';
+const { Schema } = mongoose;
 import bcrypt from 'bcrypt';
 const saltRounds = 10; // Number of salt rounds to use
 
@@ -14,9 +15,6 @@ const router = express.Router();
 router.get('/bookings', async (req, res) => {
     try {
       const bookings = await Booking.find({})
-        .populate('user')
-        .populate('flight')
-        .populate('passengers.contact_info');
       if (bookings.length === 0) {
         return res.status(404).json({ message: 'No bookings found' });
       }
@@ -26,7 +24,26 @@ router.get('/bookings', async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
 });
-  
+
+router.get('/bookings/:id', async (req, res) => {
+  try {
+    const bookings = await Booking.find({user: new mongoose.Types.ObjectId(req.params.id)})
+    if (bookings.length === 0) {
+      return res.status(404).json({ message: 'No bookings found' });
+    }
+    res.status(200).json(bookings);
+    const today = new Date();
+    const filterData = bookings.filter(
+      booking => {return booking.flight.departure_date < today}
+    );
+    console.log(filterData);
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 router.post('/bookings', async (req, res) => {
   //console.log(req.body);
     try {
@@ -57,6 +74,17 @@ router.post('/bookings', async (req, res) => {
       console.error(err);
       res.status(500).json({ message: 'Server error' });
     }
+});
+
+router.delete('/bookings/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const result = await Booking.deleteOne({ _id: new mongoose.Types.ObjectId(id) });
+    res.status(200).json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 router.get('/flights', async (req, res) => {
