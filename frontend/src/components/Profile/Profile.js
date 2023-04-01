@@ -151,6 +151,8 @@ function Profile() {
    
                 )}
             </form>
+            <div class="clear"></div>
+            
             <Footer />
         </div>
     );

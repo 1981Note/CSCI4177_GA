@@ -55,6 +55,7 @@ function Check(props) {
                 <button onClick={() => {setGoToPayment(true);}}> NEXT </button>
             </div>
 
+            <div class="clear"></div>
             <Footer />
         </div>
     );

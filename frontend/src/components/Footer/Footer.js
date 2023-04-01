@@ -14,13 +14,13 @@ function Footer(){
 
     return (
         <footer>
-            <div class="footer">
-                <p> About </p>
-                <Link to='/help'><button className="link-button"> Help </button></Link>
-                <p> Conditions of Use </p>
-                <p> Contact Information </p>
-                <p> Feedback </p>
-            </div>
+            <ul class="footer">
+                <li> About </li>
+                <li> <Link to='/help'><button className="link-button"> Help </button></Link> </li>
+                <li> Conditions of Use </li>
+                <li> Contact Information </li>
+                <li> Feedback </li>
+            </ul>
         </footer>
     );
 }

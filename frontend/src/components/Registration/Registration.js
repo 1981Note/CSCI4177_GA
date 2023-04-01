@@ -85,7 +85,7 @@ function Registration() {
       setPasswordError("Password is required");
     } else if (!PWD_REGEX.test(event.target.value)) {
       setPasswordError(
-        "Password must be atleast 8 chracters long. Atleas 1 letter, 1 special character and 1 number"
+        "Password must be at least 8 characters long. At least 1 letter, 1 special character and 1 number"
       );
     } else {
       setPasswordError("");
@@ -263,7 +263,9 @@ function Registration() {
         </section>
       </form>
       <div>
-        <Footer />
+
+      <div class="clear"></div>
+      <Footer />
       </div>
     </div>
   );

@@ -104,6 +104,7 @@ function Login() {
           <button className="login-btn">Login</button>
         </form>
       </div>
+      <div class="clear"></div>
       <Footer />
     </div>
   );

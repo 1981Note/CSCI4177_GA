@@ -7,16 +7,13 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-export const AuthProvider = ({ children, onSignOut }) => {
+export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
 
   const signOut = () => {
     // Perform any necessary sign-out tasks, such as clearing tokens or user data
     setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn');
-    if (onSignOut) {
-      onSignOut();
-    }
   };
 
   const value = {

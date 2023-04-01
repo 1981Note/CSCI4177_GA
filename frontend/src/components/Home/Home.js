@@ -140,6 +140,7 @@ function Home() {
                     
                 </div>
             )}
+            <div class="clear"></div>
             <Footer />
 
         </div>

@@ -36,7 +36,7 @@ router.get('/bookings/:id', async (req, res) => {
     const filterData = bookings.filter(
       booking => {return booking.flight.departure_date < today}
     );
-    console.log(filterData);
+    //console.log(filterData);
     
   } catch (err) {
     console.error(err);

@@ -96,6 +96,7 @@ function Trips() {
                         
              </div>
 
+             <div class="clear"></div>
             <Footer />
 
         </div>
