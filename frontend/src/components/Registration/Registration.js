@@ -155,7 +155,7 @@ function Registration() {
           </div>
           <div>
             <div>
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name">Name</label>
             </div>
             <input
               type="text"
@@ -168,7 +168,7 @@ function Registration() {
 
           <div>
             <div>
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Email</label>
             </div>
             <input
               type="email"
@@ -181,7 +181,7 @@ function Registration() {
 
           <div>
             <div>
-              <label htmlFor="password">Password:</label>
+              <label htmlFor="password">Password</label>
             </div>
             <input
               type="password"
@@ -194,7 +194,7 @@ function Registration() {
 
           <div>
             <div>
-              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <label htmlFor="confirmPassword">Confirm Password</label>
             </div>
             <input
               type="password"
@@ -220,7 +220,7 @@ function Registration() {
 
           <div>
             <div>
-              <label htmlFor="gender">Gender:</label>
+              <label htmlFor="gender">Gender</label>
             </div>
             <select id="gender" value={gender} onChange={handleGenderChange}>
               <option value="">Select Gender</option>
@@ -233,7 +233,7 @@ function Registration() {
 
           <div>
             <div>
-              <label htmlFor="dob">Date of Birth:</label>
+              <label htmlFor="dob">Date of Birth</label>
             </div>
             <input
               type="date"
@@ -246,7 +246,7 @@ function Registration() {
 
           <div>
             <div>
-              <label htmlFor="address"> Address:</label>
+              <label htmlFor="address"> Address</label>
             </div>
             <input
               type="text"
