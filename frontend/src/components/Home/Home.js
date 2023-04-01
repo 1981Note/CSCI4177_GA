@@ -21,7 +21,7 @@ function Home() {
     const { isLoggedIn } = useAuth();
     
     useEffect(() => {
-        axios.get("http://localhost:4000/api/flights")
+        axios.get("https://csci4177-group18.onrender.com/api/flights")
         .then(res => {
             const data = res.data;
             setFlight(data)
