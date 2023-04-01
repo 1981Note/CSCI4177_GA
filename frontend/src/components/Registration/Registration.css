@@ -59,7 +59,7 @@
   border-color: #007bff;
   box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
 }
-input[type="date"] {
+#dob input[type="date"] {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
