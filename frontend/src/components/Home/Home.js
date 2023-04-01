@@ -4,16 +4,33 @@ import './Home.css';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import avatar from '../../img/user.png';
-import flight from '../../img/flights.png';
+import flightPicture from '../../img/flights.png';
 
 import { Navigate } from "react-router-dom";
 
+import axios from 'axios';
 
+import { useAuth } from "../Auth/AuthContext";
 
 function Home() {
+
+    const [flights, setFlight] = useState([])
+    const [selectedFlight, setSelectedFlight] = useState(null)
+    const { isLoggedIn } = useAuth();
     
+    useEffect(() => {
+        axios.get("http://localhost:4000/api/flights")
+        .then(res => {
+            const data = res.data;
+            setFlight(data)
+            
+        }).catch(err => console.log(err))
+    }, [])
+
+
+
 
     const endDateRef = useRef(null);
 
@@ -57,9 +74,8 @@ function Home() {
     const [goToEnterInfo, setGoToEnterInfo] = React.useState(false);
 
     if (goToEnterInfo) {
-        return <Navigate to="/enterinfo"/>;
+        return <Navigate to="/enterinfo" state={{flight : selectedFlight}}/>;
     }
-
 
     return (
 
@@ -97,52 +113,36 @@ function Home() {
             {/* if pass the search validated, then show the flight info form */}
             {searchValidated && (
                 <div>
-                    <form class="flight-info">
-                        <h2 class="flight-number-title"> Flight Number </h2>
-                        <div>
-                            <img src={flight} alt="flight" width={50} height={50} />
-                            <p> Flight Company </p>
-                            <p> Origin </p>
-                            <p> To </p>
-                            <p> Destination </p>
-                            <p> Price </p>
-                            <button class="book-button" onClick={() => {setGoToEnterInfo(true);}}> BOOK </button>
-                        </div>
-                    </form>
-
-                    <form class="flight-info">
-                        <h2 class="flight-number-title"> Flight Number </h2>
-                        <div>
-                            <img src={flight} alt="flight" width={50} height={50} />
-                            <p> Flight Company </p>
-                            <p> Origin </p>
-                            <p> To </p>
-                            <p> Destination </p>
-                            <p> Price </p>
-                            <button class="book-button" onClick={() => {setGoToEnterInfo(true);}}> BOOK </button>
-                        </div>
-                    </form>
-
-                    <form class="flight-info">
-                        <h2 class="flight-number-title"> Flight Number </h2>
-                        <div>
-                            <img src={flight} alt="flight" width={50} height={50} />
-                            <p> Flight Company </p>
-                            <p> Origin </p>
-                            <p> To </p>
-                            <p> Destination </p>
-                            <p> Price </p>
-                            <button class="book-button" onClick={() => {setGoToEnterInfo(true);}}> BOOK </button>
-                        </div>
-                    </form>
+                    
+                        
+                    {flights.map((flight, index) => (
+                        <form class="flight-info">
+                        <h2 class="flight-number-title"> {flight.flight_company} </h2>
+                            <div key={index}>
+                                <img src={flightPicture} alt="flight" width={50} height={50} />
+                                <p> {flight.flight_company} </p>
+                                <p> {flight.origin} </p>
+                                <p> To </p>
+                                <p> {flight.destination} </p>
+                                <p> {flight.price} </p>
+                                <button class="book-button" onClick={() => {
+                                                            if (isLoggedIn) {
+                                                            setSelectedFlight(flight);
+                                                            setGoToEnterInfo(true);
+                                                            } else {
+                                                            alert("Please log in to book a flight.");
+                                                            }
+                                                        }}> BOOK </button>
+                            </div>
+                        </form>
+                    ))}
+                        
+                    
                 </div>
             )}
-
             <Footer />
 
         </div>
-        
-    
 
     );
 }

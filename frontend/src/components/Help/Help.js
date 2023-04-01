@@ -45,7 +45,7 @@ function Help() {
 
         <div>
             <Header />
-                <h2>Contact</h2>
+                <h2 className='contact-title'>Contact</h2>
                 <form onSubmit={handleSubmit}>
                     <div class="contactInput">
                         <label>

@@ -136,6 +136,8 @@
     padding: 10px;
 }
 
+.clear { clear: both; height: 100px; }
+
 @media screen and (max-width: 840px) {
     /*Smartphone/moblie view (unitl 840px)*/
 

@@ -16,7 +16,7 @@ function Footer(){
         <footer>
             <div class="footer">
                 <p> About </p>
-                <p onClick={() => {setGoToHelp(true);}}> Help </p>
+                <Link to='/help'><button className="link-button"> Help </button></Link>
                 <p> Conditions of Use </p>
                 <p> Contact Information </p>
                 <p> Feedback </p>

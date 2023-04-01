@@ -23,7 +23,7 @@ export default class DbConnection {
           }
         );
         console.log("Successfully connected to the database");
-        this.db = this.client.db("test");
+        this.db = this.client.db("flight");
       } catch (err) {
         console.error(err.stack);
         process.exit(1);

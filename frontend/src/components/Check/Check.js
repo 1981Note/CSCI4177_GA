@@ -1,16 +1,19 @@
+/* Arthur: Siyuan Chen */
 import React, { useState } from 'react';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "./Check.css";
-import flight from '../../img/flights.png';
-import { Navigate, Link } from "react-router-dom";
+import flightPicture from '../../img/flights.png';
+import { Navigate, Link, useLocation } from "react-router-dom";
 
 function Check(props) {
+
+    const { flight } = useLocation().state;
 
     const [goToPayment,setGoToPayment] = useState(false);
 
     if (goToPayment){
-        return <Navigate to="/payment"/>;
+        return <Navigate to="/payment" state={{flight, contact: props, fields: props.formFields}}/>;
     }
 
     return (
@@ -20,12 +23,12 @@ function Check(props) {
             <section class="flight-info">
                 <h3 class="flight-number-title"> Flight Number </h3>
                 <div>
-                    <img src={flight} alt="flight" width={50} height={50} />
-                    <p> Flight Company </p>
-                    <p> Origin </p>
+                    <img src={flightPicture} alt="flight" width={50} height={50} />
+                    <p> {flight.flight_company} </p>
+                    <p> {flight.origin} </p>
                     <p> To </p>
-                    <p> Destination </p>
-                    <p> Price </p>
+                    <p> {flight.destination} </p>
+                    <p> {flight.price} </p>
                 </div>
             </section>
 

@@ -1,8 +1,9 @@
+/* Arthur: Siyuan Chen */
 import './Header.css';
 
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useNavigate } from "react-router-dom";
 
 import avatar from '../../img/user.png';
 
@@ -10,10 +11,18 @@ import profile from '../../img/profile.png';
 import trips from '../../img/trips.png';
 import logout from '../../img/logout.png';
 
+import { useAuth } from '../Auth/AuthContext';
+
 function Header(){
 
-    /* If user logged in, then change the state */
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { isLoggedIn, signOut } = useAuth();
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        signOut();
+        localStorage.clear()
+        navigate('/');
+      };
 
     const [open, setOpen] = useState(false);
 
@@ -37,16 +46,16 @@ function Header(){
                             
                         <div class={`dropdown-menu ${open? 'active' : 'inactive'}`}>
                             <ul>
-                                <li><Link to='/profile'><button id="home-profile-button"> <img src={profile} alt="profile" width={15} height={15}/> Profile </button></Link></li>
-                                <li><Link to='/trips'><button id="home-trips-button"> <img src={trips} alt="trips" width={15} height={15}/> Trips </button></Link></li>
-                                <li><button id="home-signout-button">  <img src={logout} alt="logout" width={15} height={15}/> Sign out </button></li>
+                                <li><Link to={"/profile"}><button id="home-profile-button"> <img src={profile} alt="profile" width={15} height={15}/> Profile </button></Link></li>
+                                <li><Link to={"/trips"}><button id="home-trips-button"> <img src={trips} alt="trips" width={15} height={15}/> Trips </button></Link></li>
+                                <li><button id="home-signout-button" onClick={handleSignOut}>  <img src={logout} alt="logout" width={15} height={15}/> Sign out </button></li>
                             </ul>
                         </div>
                     </div>
                     
                 ) : (
                     
-                    <div class="home-buttons">
+                    <div className="home-buttons">
                         <Link to='/registration'><button id="home-register-button"> REGISTER </button></Link>
                         <Link to='/login'><button id="home-login-button"> LOGIN </button></Link>
                     </div>

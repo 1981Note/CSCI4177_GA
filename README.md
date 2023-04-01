@@ -6,8 +6,8 @@
 This project is to implement a flight booking website using MERN stack.
 
 * *Date Created*: 25 01 2023
-* *Last Modification Date*: DD MMM YYYY
-* *Lab URL*: <http://example.com/>
+* *Last Modification Date*: 28 02 2023
+* *Lab URL*: <https://celebrated-clafoutis-45dd3e.netlify.app/>
 * *Git URL*: <https://git.cs.dal.ca/ubada/group_18_csci4177>
 
 ## Authors

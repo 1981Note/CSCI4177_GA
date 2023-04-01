@@ -57,3 +57,21 @@
   justify-content: center;
   min-height: 100vh;
 }
+
+.buttonsGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 10%;
+}
+
+#edit,
+.buttonsGroup button{
+  margin-left: 10px;
+  color: #fff7f7;
+  background-color: #204969;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+}

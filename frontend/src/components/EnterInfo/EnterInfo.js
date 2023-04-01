@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+/* Arthur: Siyuan Chen */
+import React, { useState } from 'react';
 import Footer from '../Footer/Footer';
 import Header from "../Header/Header";
 import './EnterInfo.css';
-import flight from '../../img/flights.png';
-import { Navigate, Link } from "react-router-dom";
+import flightPicture from '../../img/flights.png';
+import { Link, useLocation } from "react-router-dom";
 import Check from "../Check/Check";
 
 function EnterInfo() {
+
+    const { flight } = useLocation().state;
 
     const [emailInputValue, setEmail] = useState("");
     const [phoneNumberInputValue, setPhoneNumber] = useState("");
@@ -159,12 +162,12 @@ function EnterInfo() {
             <section class="flight-info">
                 <h3 class="flight-number-title"> Flight Number </h3>
                 <div>
-                    <img src={flight} alt="flight" width={50} height={50} />
-                    <p> Flight Company </p>
-                    <p> Origin </p>
+                    <img src={flightPicture} alt="flight" width={50} height={50} />
+                    <p> {flight.flight_company} </p>
+                    <p> {flight.origin} </p>
                     <p> To </p>
-                    <p> Destination </p>
-                    <p> Price </p>
+                    <p> {flight.destination} </p>
+                    <p> {flight.price} </p>
                 </div>
             </section>
 
@@ -266,10 +269,13 @@ function EnterInfo() {
                 <button id="detail-button" onClick={(event) => submit(event, emailInputValue, phoneNumberInputValue, formFields)}>Next</button>
             
             </div>
+
+            <div class="clear"></div>
+            
             <Footer />
         </div>
         ) : (
-            <Check email={emailInputValue} phoneNumber={phoneNumberInputValue} formFields={formFields}/>
+            <Check flight={flight} email={emailInputValue} phoneNumber={phoneNumberInputValue} formFields={formFields}/>
         )
 
     );

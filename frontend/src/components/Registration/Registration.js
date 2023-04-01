@@ -3,7 +3,7 @@ import Footer from "../Footer/Footer";
 import React, { useState } from "react";
 import "./Registration.css";
 
-const Registration = () => {
+function Registration () {
   const PWD_REGEX =
     /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
   const [name, setName] = useState("");

@@ -1,3 +1,4 @@
+/* Arthur: Siyuan Chen */
 import './PaymentSuccessful.css';
 import React, { useState } from 'react';
 import Header from "../Header/Header";
@@ -5,7 +6,7 @@ import Footer from "../Footer/Footer";
 import { Navigate } from 'react-router-dom';
 
 
-function PaymentSuccessful() {
+function PaymentSuccessful(props) {
 
     const [backTrips, setBackTrips] = useState(false);
 
@@ -18,7 +19,7 @@ function PaymentSuccessful() {
             <Header />
             <div className='paySucc'>
             <h2>Booking successful</h2>
-            <p>Your ticket number is XXXXXXX</p>
+            <p>Your booking ID is: {props.confirmId}</p>
 
             <button className="backButton" onClick={(e)=>setBackTrips(true)}>VIEW ALL BOOKINGS</button>
             </div>
