@@ -35,7 +35,7 @@ function Registration() {
     console.log(typeof dateNew);
 
     try {
-      const response = await axios.post("http://localhost:4000/api/users", {
+      const response = await axios.post("https://csci4177-group18.onrender.com/api/users", {
         name: name,
         email: email,
         password: password,

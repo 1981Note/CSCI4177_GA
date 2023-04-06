@@ -30,7 +30,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:4000/api/login', {
+      const response = await axios.post('https://csci4177-group18.onrender.com/api/login', {
         email: email,
         password: password
       });

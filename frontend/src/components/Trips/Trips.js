@@ -21,7 +21,7 @@ function Trips() {
     const id = JSON.parse(localStorage.getItem('user'))._id
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/bookings/${id}`)
+        axios.get(`https://csci4177-group18.onrender.com/api/bookings/${id}`)
         .then(res => {
             const data = res.data;
             
