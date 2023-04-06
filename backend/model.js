@@ -30,7 +30,9 @@ const flightSchema = new Schema({
     destination: { type: String, required: true },
     departure_date: { type: Date, required: true },
     arrival_date: { type: Date, required: true },
-    price: { type: Number, required: true }
+    price: { type: Number, required: true },
+    capacity: { type: Number, required: true },
+    seats_reserved: { type: Number, required: true }
 }, { collection: 'flights' });
   
 

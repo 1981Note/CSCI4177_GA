@@ -88,42 +88,72 @@ router.delete('/bookings/:id', async (req, res) => {
 });
 
 router.get('/flights', async (req, res) => {
-    try {
-      const flights = await Flight.find();
-      res.status(200).json(flights);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+  try {
+    const origin = req.query.origin;
+    const destination = req.query.destination;
+
+    let query = {};
+
+    if (origin) {
+      query['origin'] = origin;
     }
+
+    if (destination) {
+      query['destination'] = destination;
+    }
+
+    const flights = await Flight.find(query);
+
+    if (flights.length === 0) {
+      return res.status(404).json({ message: 'No flights found' });
+    }
+
+    res.status(200).json(flights);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 router.post('/flights', async (req, res) => {
-    try {
-        const { flight_number, flight_company, origin, destination, price, departure_date, arrival_date } = req.body;
-  
-      // Create a new flight object using the request body
-      const flight = new Flight({
-        flight_number: flight_number,
-        flight_company: flight_company,
-        origin: origin,
-        destination: destination,
-        departure_date: departure_date,
-        arrival_date: arrival_date,
-        price: price
-      });
-  
-      // Save the flight to the database
-      await flight.save();
-  
-      // Send a success response
-      res.status(201).json({
-        message: 'Flight created successfully',
-        flight: flight
-      });
-    } catch (err) {
-      // Handle any errors that occur during the flight creation process
-      console.error(err);
-      res.status(500).json({ error: 'Server error' });
-    }
+  try {
+    const {
+      flight_number,
+      flight_company,
+      origin,
+      destination,
+      price,
+      departure_date,
+      arrival_date,
+      capacity,
+      seats_reserved
+    } = req.body;
+
+    // Create a new flight object using the request body
+    const flight = new Flight({
+      flight_number: flight_number,
+      flight_company: flight_company,
+      origin: origin,
+      destination: destination,
+      departure_date: departure_date,
+      arrival_date: arrival_date,
+      price: price,
+      capacity: capacity,
+      seats_reserved: seats_reserved
+    });
+
+    // Save the flight to the database
+    await flight.save();
+
+    // Send a success response
+    res.status(201).json({
+      message: 'Flight created successfully',
+      flight: flight
+    });
+  } catch (err) {
+    // Handle any errors that occur during the flight creation process
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
 });
 
 // Get all users
