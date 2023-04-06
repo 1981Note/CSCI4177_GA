@@ -35,7 +35,7 @@ function Registration() {
     console.log(typeof dateNew);
 
     try {
-      const response = await axios.post("https://csci4177-group18.onrender.com/api/users", {
+      const response = await axios.post("http://localhost:4000/api/users", {
         name: name,
         email: email,
         password: password,
@@ -151,7 +151,7 @@ function Registration() {
       <form onSubmit={handleSubmit} class="regForm">
         <section class="form-modal">
           <div>
-            <h1 className="headerReg">FLYCANADA Registration</h1>
+            <h1 className="headerReg">FLYCANDA Registration</h1>
           </div>
           <div>
             <div>

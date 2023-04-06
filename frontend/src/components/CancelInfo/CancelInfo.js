@@ -21,7 +21,7 @@ function CancelInfo() {
     useEffect(() => {
         if (cancelConfirmed) {
             
-            axios.delete(`https://csci4177-group18.onrender.com/api/bookings/${flightCanceled._id}`).then(res => {
+            axios.delete(`http://localhost:4000/api/bookings/${flightCanceled._id}`).then(res => {
                 const data = res.data;                
                 console.log(data);
                 setgoBackTrips(true)

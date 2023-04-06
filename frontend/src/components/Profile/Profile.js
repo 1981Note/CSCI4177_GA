@@ -57,7 +57,7 @@ function Profile() {
         // Do something with the form data (e.g. save to database)
         //console.log('Form submitted:', { name, email, phone, birthdate, gender, address });
         try {
-            const res = await axios.put(`https://csci4177-group18.onrender.com/api/users/${userInfo._id}`, editUserInfo); 
+            const res = await axios.put(`http://localhost:4000/api/users/${userInfo._id}`, editUserInfo); 
             if (res.status === 200){
                 setUserInfo(editUserInfo);
                 localStorage.setItem("user",JSON.stringify(editUserInfo));

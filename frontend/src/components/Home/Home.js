@@ -23,7 +23,7 @@ function Home() {
     const [searchCriteria, setSearchCriteria] = useState({});
 
     useEffect(() => {
-      axios.get("https://csci4177-group18.onrender.com/api/flights")
+      axios.get("http://localhost:4000/api/flights")
         .then(res => {
           const data = res.data;
           setFlights(data);
