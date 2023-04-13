@@ -30,7 +30,7 @@ function Help() {
         event.preventDefault();
     
         try {
-          const response = await axios.post("http://csci4177-group18.onrender.com/api/message", {
+          const response = await axios.post("https://csci4177-group18.onrender.com/api/message", {
             name: name,
             email: email,
             help_message: help_message
