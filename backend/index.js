@@ -6,6 +6,7 @@ import route from './route.js';
 import cors from "cors";
 import passport from 'passport';
 import session from 'express-session';
+import MemoryStore from "memorystore";
 
 
 dotenv.config()
@@ -21,6 +22,10 @@ app.use(cors());
  * Accessed Date: 2023/03/30
  */
 app.use(session({
+  cookie: { maxAge: 86400000 },
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  }),
   secret: 'session-secret',
   resave: false,
   saveUninitialized: false,
