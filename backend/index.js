@@ -6,7 +6,7 @@ import route from './route.js';
 import cors from "cors";
 import passport from 'passport';
 import session from 'express-session';
-import MemoryStore from "memorystore";
+import MemoryStoreFactory from "memorystore";
 
 
 dotenv.config()
@@ -15,6 +15,8 @@ const app = express();
 
 // Enable CORS for all domains
 app.use(cors());
+
+const MemoryStore = MemoryStoreFactory(session);
 
 /**
  * Node.js Passport Login System Tutorial
