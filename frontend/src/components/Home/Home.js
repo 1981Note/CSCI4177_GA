@@ -23,7 +23,7 @@ function Home() {
     const [searchCriteria, setSearchCriteria] = useState({});
 
     useEffect(() => {
-      axios.get("https://csci4177-group18.onrender.com/api/flights")
+      axios.get("http://csci4177-group18.onrender.com/api/flights")
         .then(res => {
           const data = res.data;
           setFlights(data);
@@ -48,7 +48,7 @@ function Home() {
   
     function handleSearch(event) {
       event.preventDefault();
-      if (searchCriteria.origin === "" || searchCriteria.destination === "" || searchCriteria.start === "") {
+      if (searchCriteria.origin === "" || searchCriteria.destination === "" || searchCriteria.start === "" || searchCriteria.passengers === "") {
         alert("Please fill all required fields!");
       } else if ((searchCriteria.end === "") && (endDateRef.current.style.visibility === "visible")) {
         alert("Please fill the end date field!");
@@ -78,6 +78,23 @@ function Home() {
       return <Navigate to="/enterinfo" state={{ flight: selectedFlight }} />;
     }
   
+    function filterFlights(flights, searchCriteria, isReturn) {
+      
+        let origin = searchCriteria.origin;
+        let destination = searchCriteria.destination;
+
+        if(isReturn){
+          destination = searchCriteria.origin;
+          origin = searchCriteria.destination;
+        }
+      return flights.filter(flight =>
+        flight.capacity - flight.seats_reserved >= searchCriteria.passengers && 
+        flight.origin === origin &&
+        flight.destination === destination &&
+        new Date(flight.departure_date).getDate() === new Date(searchCriteria.start).getDate() &&
+        new Date(flight.departure_date).getMonth() === new Date(searchCriteria.start).getMonth()
+      );
+    }
 
     return (
         <div>
@@ -88,7 +105,10 @@ function Home() {
             </div>
             
             <form class="flight-filter" onSubmit={handleSearch}>
-            <select name="origin" onChange={handleInputChange}>
+            <label htmlFor="passengers">Passengers:</label>
+                <input type="number" id="passengers" name="passengers" min="1" onChange={handleInputChange} />
+                <select name="origin" onChange={handleInputChange}>
+
                 {cities.map(city => (
                     <option key={city} value={city}>{city}</option>
                 ))}
@@ -108,12 +128,7 @@ function Home() {
             {searchValidated && (
             <div>
                 <h2>Departure Flights:</h2>
-                {flights.filter(flight =>
-                flight.origin === searchCriteria.origin &&
-                flight.destination === searchCriteria.destination
-                && new Date(flight.departure_date).getDate() === new Date(searchCriteria.start).getDate()
-                && new Date(flight.departure_date).getMonth() === new Date(searchCriteria.start).getMonth()
-                ).map((flight, index) => (
+                {filterFlights(flights, searchCriteria, false).map((flight, index) => (
                     <form className="flight-info" key={index}>
                     <h2 className="flight-number-title">{flight.flight_company}</h2>
                     <div>
@@ -136,7 +151,7 @@ function Home() {
                             }
                         }}
                         >
-                        ...
+                        Book Flight
                         </button>
                     </div>
                     </form>
@@ -144,12 +159,7 @@ function Home() {
                 {flightType === "Round-trip" && (
                     <div>
                         <h2>Return Flights:</h2>
-                        {flights.filter(flight =>
-                            flight.origin === searchCriteria.destination &&
-                            flight.destination === searchCriteria.origin
-                            && new Date(flight.departure_date).getDate() === new Date(searchCriteria.end).getDate()
-                            && new Date(flight.departure_date).getMonth() === new Date(searchCriteria.end).getMonth()
-                        ).map((flight, index) => (
+                        {filterFlights(flights, searchCriteria, true).map((flight, index) => (
                         <form className="flight-info" key={index}>
                             <h2 className="flight-number-title">{flight.flight_company}</h2>
                             <div>
@@ -172,7 +182,7 @@ function Home() {
                                 }
                                 }}
                             >
-                                ...
+                                Book flight
                             </button>
                             </div>
                         </form>

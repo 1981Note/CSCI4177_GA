@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { User, Booking, Flight} from './model.js';
+import { User, Booking, Flight, Message} from './model.js';
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 import bcrypt from 'bcrypt';
@@ -45,35 +45,46 @@ router.get('/bookings/:id', async (req, res) => {
 });
 
 router.post('/bookings', async (req, res) => {
-  //console.log(req.body);
-    try {
+  try {
+    const { user, flight, passengers } = req.body;
 
-      const { user, flight, passengers } = req.body;
-
-      //console.log(user)
-      // Check if the user exists in the User collection
-      const userExists = await User.findById(user);
-
-      if (!userExists) {
-        return res.status(400).json({ message: 'User not found' });
-      }
-  
-      // Create a new booking instance with _id set
-      const booking = new Booking({
-        _id: new mongoose.Types.ObjectId(),
-        user: user,
-        flight: flight,
-        passengers: passengers
-      });
-  
-      // Save the booking to the database
-      await booking.save();
-  
-      res.status(201).json(booking);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: 'Server error' });
+    // Check if the user exists in the User collection
+    const userExists = await User.findById(user);
+    if (!userExists) {
+      return res.status(400).json({ message: 'User not found' });
     }
+
+    // Find the flight document and update the fields
+    const flightDoc = await Flight.findById(flight);
+    if (!flightDoc) {
+      return res.status(400).json({ message: 'Flight not found' });
+    }
+
+    // Multiply the price by 2
+    flightDoc.price *= ((0.01*passengers.length)+1);
+
+    // Increment the number of seats reserved
+    flightDoc.seats_reserved += passengers.length;
+
+    // Save the updated flight document
+    await flightDoc.save();
+
+    // Create a new booking instance with _id set
+    const booking = new Booking({
+      _id: new mongoose.Types.ObjectId(),
+      user: user,
+      flight: flight,
+      passengers: passengers
+    });
+
+    // Save the booking to the database
+    await booking.save();
+
+    res.status(201).json(booking);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 router.delete('/bookings/:id', async (req, res) => {
@@ -201,6 +212,32 @@ router.post('/users', async (req, res) => {
     });
   } catch (err) {
     // Handle any errors that occur during the user creation process
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.post('/message', async (req, res) => {
+  try {
+    const { name, email, help_message } = req.body;
+
+    // Create a new message object using the request body
+    const message_details = new Message({
+      name: name,
+      email: email,
+      help_message: help_message
+    });
+
+    // Save the message to the database
+    await message_details.save();
+
+    // Send a success response
+    res.status(201).json({
+      message: 'Message sent successfully',
+      message_details: message_details
+    });
+  } catch (err) {
+    // Handle any errors that occur during the message creation process
     console.error(err);
     res.status(500).json({ message: 'Server error' });
   }

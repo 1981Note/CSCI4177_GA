@@ -11,6 +11,12 @@ const userSchema = new Schema([{
     address: { type: String }
 }], { collection: 'users' });
 
+const messageSchema = new Schema([{
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    help_message: { type: String, required: true }
+}], { collection: 'messages' });
+
 const passengerSchema = new Schema({
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
@@ -69,5 +75,6 @@ const FlightConnection = mongoose.createConnection(process.env.URI, {
 const User = UserConnection.model('User', userSchema);
 const Booking = BookingConnection.model('Booking', bookingSchema);
 const Flight = FlightConnection.model('Flight', flightSchema)
+const Message = UserConnection.model('Message', messageSchema);
 
-export { User, Booking, Flight, passengerSchema, userSchema };
+export { User, Booking, Flight, Message, passengerSchema, userSchema };
